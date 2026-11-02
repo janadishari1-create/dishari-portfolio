@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dishari Jana — first-year ECE student exploring programming, electronics, and emerging technologies." />
+  <title>Dishari Jana | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: rgba(18, 27, 50, .82);
+      --text: #eef3ff;
+      --muted: #a8b5d0;
+      --accent: #83f0d0;
+      --accent2: #9aa8ff;
+      --border: rgba(255,255,255,.12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(circle at 85% 5%, rgba(115,133,255,.16), transparent 28rem),
+        radial-gradient(circle at 5% 25%, rgba(91,240,200,.10), transparent 26rem), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1080px, 91%); margin: auto; }
+    header { padding: 22px 0; position: sticky; top: 0; z-index: 5; backdrop-filter: blur(16px); background: rgba(11,16,32,.82); border-bottom: 1px solid var(--border); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; }
+    .brand span { color: var(--accent); }
+    .navlinks { display: flex; flex-wrap: wrap; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: .92rem; }
+    .navlinks a:hover { color: var(--accent); }
+    .hero { min-height: 72vh; display: grid; align-items: center; grid-template-columns: 1.3fr .7fr; gap: 42px; padding: 76px 0 66px; }
+    .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 800; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); line-height: .99; letter-spacing: -.065em; margin: 18px 0; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .lead { color: var(--muted); max-width: 640px; font-size: 1.1rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; padding: 11px 17px; border-radius: 12px; text-decoration: none; font-weight: 750; border: 1px solid var(--border); }
+    .primary { background: var(--accent); color: #08131b; border-color: var(--accent); }
+    .secondary:hover { border-color: var(--accent); }
+    .orb-wrap { min-height: 300px; display: grid; place-items: center; }
+    .orb { width: min(300px, 70vw); aspect-ratio: 1; border-radius: 50%; position: relative; display: grid; place-items: center; border: 1px solid rgba(131,240,208,.5); background: radial-gradient(circle at 30% 25%, rgba(131,240,208,.24), transparent 35%), radial-gradient(circle at 70% 70%, rgba(154,168,255,.24), transparent 38%), rgba(255,255,255,.025); box-shadow: 0 0 80px rgba(131,240,208,.08), inset 0 0 50px rgba(154,168,255,.07); }
+    .orb:before, .orb:after { content: ""; position: absolute; inset: 12%; border: 1px dashed rgba(131,240,208,.3); border-radius: 50%; transform: rotate(-25deg) scaleX(1.18); }
+    .orb:after { transform: rotate(55deg) scaleX(1.18); border-color: rgba(154,168,255,.4); }
+    .orb-text { text-align: center; z-index: 1; }
+    .orb-text strong { display: block; font-size: 3.4rem; letter-spacing: -.08em; }
+    .orb-text span { color: var(--muted); font-size: .8rem; letter-spacing: .13em; }
+    section { padding: 62px 0; }
+    .section-head { margin-bottom: 26px; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin: 5px 0; letter-spacing: -.04em; }
+    .section-head p { color: var(--muted); margin: 0; max-width: 650px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 23px; }
+    .card h3 { margin: 4px 0 9px; }
+    .card p { color: var(--muted); margin: 0; }
+    .icon { font-size: 1.35rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .taglist { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 16px; }
+    .tag { border: 1px solid var(--border); color: var(--muted); background: rgba(255,255,255,.035); padding: 6px 10px; border-radius: 999px; font-size: .88rem; }
+    .project { display: flex; flex-direction: column; min-height: 245px; }
+    .project .status { color: var(--accent); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; }
+    .project a { margin-top: auto; padding-top: 20px; color: var(--accent); text-decoration: none; }
+    .note { border-left: 3px solid var(--accent); padding: 10px 15px; background: rgba(131,240,208,.06); border-radius: 0 10px 10px 0; color: var(--muted); }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    footer { padding: 25px 0 38px; border-top: 1px solid var(--border); color: var(--muted); font-size: .9rem; }
+    @media (max-width: 760px) {
+      .hero { grid-template-columns: 1fr; padding-top: 55px; gap: 15px; }
+      .orb-wrap { min-height: 220px; }
+      .orb { width: 215px; }
+      .grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .navlinks { gap: 10px; }
+      .navlinks a { font-size: .82rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="wrap">
+      <a class="brand" href="#home" style="text-decoration:none">DISHARI<span>.</span></a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="home">
+      <div>
+        <div class="eyebrow">ECE Student · Curious by Design</div>
+        <h1>Hi, I'm<br><em>Dishari Jana.</em></h1>
+        <p class="lead">I’m a first-year Electronics and Communication Engineering student exploring the space where code, circuits, and creative problem-solving meet.</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore my work ↗</a>
+          <a class="btn secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <div class="orb-wrap" aria-label="Abstract technology illustration">
+        <div class="orb"><div class="orb-text"><strong>&lt;/&gt;</strong><span>LEARN · BUILD · REPEAT</span></div></div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious about how things work.</h2>
+          <p>I’m building my foundation in programming while studying electronics and communication engineering. I’m interested in how software and hardware can work together to solve practical problems.</p>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <div class="icon">🧭</div>
+            <h3>What drives me</h3>
+            <p>Learning by doing, asking questions, and turning small ideas into working projects. I’m excited to meet developers, learn from the community, and grow through hands-on experiences.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🌱</div>
+            <h3>What I’m exploring</h3>
+            <p>Software development, electronics, and emerging technologies. I’m especially interested in discovering how my ECE background can connect with modern software tools.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">My toolkit</div>
+          <h2>Skills & interests</h2>
+          <p>A snapshot of what I know today and the areas I want to explore further.</p>
+        </div>
+        <div class="grid">
+          <article class="card"><div class="icon">☕</div><h3>Java</h3><p>Programming fundamentals and object-oriented concepts.</p></article>
+          <article class="card"><div class="icon">🐍</div><h3>Python</h3><p>Writing code, practising logic, and exploring small automation ideas.</p></article>
+          <article class="card"><div class="icon">🗄️</div><h3>SQL</h3><p>Working with structured data and database queries.</p></article>
+        </div>
+        <div class="taglist">
+          <span class="tag">Electronics & Communication</span>
+          <span class="tag">Software Development</span>
+          <span class="tag">Problem Solving</span>
+          <span class="tag">Emerging Technologies</span>
+          <span class="tag">Continuous Learning</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Learning in public</div>
+          <h2>Projects & experiments</h2>
+          <p>I’m building practical experience one project at a time. These are project ideas to develop next—not claims of completed work.</p>
+        </div>
+        <div class="grid">
+          <article class="card project">
+            <div class="status">Planned project · Python</div>
+            <h3>Personal Expense Tracker</h3>
+            <p>A small app to record expenses, group them by category, and calculate spending totals.</p>
+            <a href="#contact">Interested in collaborating? ↗</a>
+          </article>
+          <article class="card project">
+            <div class="status">Planned project · Java</div>
+            <h3>Student Record Manager</h3>
+            <p>A beginner-friendly program to add, search, update, and organise student records.</p>
+            <a href="#contact">Interested in collaborating? ↗</a>
+          </article>
+          <article class="card project">
+            <div class="status">Planned project · ECE</div>
+            <h3>Electronics Formula Helper</h3>
+            <p>A simple tool for calculating selected basic electronics values and documenting the formulas used.</p>
+            <a href="#contact">Interested in collaborating? ↗</a>
+          </article>
+        </div>
+        <p class="note" style="margin-top:18px">As I complete projects, I’ll replace these ideas with working demos, GitHub repositories, and what I learned from building them.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="card contact-box">
+          <div>
+            <div class="eyebrow">Let’s connect</div>
+            <h2 style="margin:5px 0">Open to learning together.</h2>
+            <p style="color:var(--muted);margin:0">I’m looking forward to connecting with fellow learners and developers.</p>
+          </div>
+          <div class="actions" style="margin:0">
+            <!-- Replace the placeholder links below with your real profile URLs before publishing. -->
+            <a class="btn primary" href="https://github.com/janadishari1-create" target="_blank" rel="noreferrer">GitHub ↗</a>
+            <a class="btn secondary" href="https://www.linkedin.com/in/dishari-jana-46bb67415/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+            <a class="btn secondary" href="mailto:janadishari1@gmail.com">Email ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year"></span> Dishari Jana · Built with curiosity and a little bit of code.</div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
